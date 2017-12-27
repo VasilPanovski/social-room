@@ -1,0 +1,13 @@
+.section-home-page { background-size: cover; background-position: center; padding: 40px 0; box-shadow: inset 0px -100px 100px -100px rgba(0,0,0,.6); }
+.section-home-page .shell { max-width: 960px; position: relative;  }
+.section-home-page .section-head { max-width: 500px; margin: 0 auto; padding-bottom: 25px; }
+.section-home-page .btn { font-weight: 400; padding: 15px 30px;  }
+.section-home-page .btn:hover { background: #BB0909; }
+.section-home-page .section-body {  max-width: 620px; margin: 0 auto; }
+.section-home-page .section-title { margin-bottom: 10px; font-size: 20px;  }
+.section-home-page .socials a:hover { color: #BB0909; }
+.section-home-page .section-head p { margin-bottom: 25px; font-size: 14px; font-weight: 600; line-height: 1.6;  }
+.section-home-page .section-head p:last-child { margin-bottom: 0;  }
+.section-home-page iframe { width: 100% !important; height: 100vh !important; max-height: 350px !important;  }
+.section-home-page .socials { position: absolute; top: 0; right: 0;  }
+.section-home-page .socials li { margin-left: 20px;  }

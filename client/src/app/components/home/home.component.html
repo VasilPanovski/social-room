@@ -1,3 +1,27 @@
-<p>
-  home works!
-</p>
+<div class="main">
+  
+          <section class="section-home-page" >
+              <div class="shell">
+                  <div class="socials" *ngIf="user; else noUserTemplate;"></div>
+                      <ng-template #noUserTemplate>
+                         
+                      </ng-template> 
+  
+                      <div class="section-head">
+                          <h4 class="section-title">
+                              Welcome to this social room.  
+                          </h4> 
+                          <p>
+                            You must first login to the room. Please Sign Up.
+                        </p>
+  
+                          <p class="text-center">
+                            <a [routerLink]="register" class="btn">
+                              Sign Up
+                            </a>
+                          </p>
+                      </div> 
+              </div> 
+          </section>
+
+      </div>

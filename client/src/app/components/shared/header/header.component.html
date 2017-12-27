@@ -1,3 +1,211 @@
-<p>
-  header works!
-</p>
+<div class="header-wrap">
+	<header class="header" id="header">
+		<div class="header-content">
+			<div class="shell">
+				<div class="header-col-size1">
+					<a routerLink="/home" class="logo">
+					</a>
+				</div>
+
+				<div class="header-col-size3 login" *ngIf="user">
+					<nav class="nav-notification" [ngClass]="{'active': notificationsDropdown === true}">
+						<a (click)="toggleNotifications()">
+							<i class="fa fa-bell" aria-hidden="true"></i>
+							<span *ngIf="unread == true" class="notification active"></span>
+						</a>
+
+						<div class="notification-dropdown">
+							<ul class="">
+								<li *ngFor="let notification of notifications" [ngClass]="{'new': notification.seen === false}">
+									<a [routerLink]="['/chat/'+notification.senderId]">
+										<strong>{{notification.notificationTitle}}</strong>
+										{{notification.notificationText}}
+										<span>
+											{{notification.createdAt | date:'fullDate'}}
+										</span>
+									</a>
+								</li>
+
+								<li>
+									<a>
+										<strong>Welcome!</strong>
+										Nice to see you in PFL
+
+									</a>
+								</li>
+
+							</ul>
+
+							<a href="#">View all notifications</a>
+						</div>
+					</nav>
+
+					<nav class="profile" [ngClass]="{'active': profileDropdown === true}">
+						<a class="avatar" [style.background-image]="'url('+user.profilPicUrl+')'" (click)="toggleProfileDropdown()"></a>
+
+						<ul class="profile-dropdown">
+							<li>
+								<a [routerLink]="['/profile/pro', user.id]" *ngIf="isPro; else amateurTemplate" (click)="toggleProfileDropdown()">
+									<i class="fa fa-user-o" aria-hidden="true"></i>
+
+									<span>View profile </span>
+								</a>
+
+								<ng-template #amateurTemplate>
+									<a [routerLink]="['/myprofile', user.id]" (click)="toggleProfileDropdown()">
+										<i class="fa fa-user-o" aria-hidden="true"></i>
+
+										<span>View profile </span>
+									</a>
+								</ng-template>
+							</li>
+
+							<li>
+								<a routerLink="/profile/edit" (click)="toggleProfileDropdown()">
+									<i class="fa fa-cog" aria-hidden="true"></i>
+
+									<span>Settings</span>
+								</a>
+							</li>
+
+							<li>
+								<a (click)='logout()'>
+									<i class="fa fa-sign-out" aria-hidden="true"></i>
+
+									<span> Log out </span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+
+					<!-- <a href="#" class="btn-search">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</a> -->
+				</div>
+
+				<!--IF No User-->
+				<div class="header-col-size3" *ngIf="!user">
+					<a routerLink="/register" class="btn-sing">
+						<strong>
+							Sign Up
+						</strong>
+					</a>
+
+					<a href="#" class="btn-search">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="header-inner-mobile">
+			<div class="shell">
+				<div class="btn-menu" [ngClass]="{'open': mobileOpen === 'open'}" (click)="openMobileMenu()">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="header-inner" *ngIf="user;">
+			<div class="shell">
+				<div class="navigation">
+					<nav class="nav">
+						<ul>
+							<li *ngIf="user">
+								<a [routerLink]="['/myprofile', user.id]">
+									My Profile
+								</a>
+							</li>
+
+							<li>
+								<a routerLink="#">
+									The Mission
+								</a>
+							</li>
+
+							<li>
+								<a routerLink="/people">
+									People
+								</a>
+							</li>
+
+							<li>
+								<a routerLink="#">
+									Sweet Revenge Corner
+								</a>
+							</li>
+
+              <li>
+                <a routerLink="/blog">
+                  Blog
+                </a>
+              </li>
+
+              <li>
+                <a routerLink="#">
+                  Forum
+                </a>
+              </li>
+
+              <li>
+                <a routerLink="#">
+                  Go Premium
+                </a>
+              </li>
+
+						</ul>
+					</nav>
+				</div>
+
+				<div class="socials">
+					<ul>
+						<li>
+							<a href="#" target="_blank">
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+							</a>
+						</li>
+
+						<!--<li>-->
+							<!--<a href="#" target="_blank">-->
+								<!--<i class="fa fa-twitter" aria-hidden="true"></i>-->
+							<!--</a>-->
+						<!--</li>-->
+
+						<li>
+							<a href="#" target="_blank">
+								<i class="fa fa-youtube" aria-hidden="true"></i>
+							</a>
+						</li>
+
+						<li>
+							<a href="#" target="_blank">
+								<i class="fa fa-instagram" aria-hidden="true"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="navigation-secondary">
+			<div class="shell">
+				<nav class="nav-secondary">
+					<ul>
+						<li>
+							<a href="#">ABOUT</a>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<a href="#">FAQ</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+</div>

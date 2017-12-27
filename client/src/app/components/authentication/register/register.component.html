@@ -1,3 +1,56 @@
-<p>
-  register works!
-</p>
+<div class="popup-col popup-col-size1 ">
+	<div class="widget widget-singup">
+		<div class="widget-body">
+			<div class="form-singin">
+				<form [formGroup]="userToRegister" class="register-form" (ngSubmit)="register()">
+
+					<div class="form-row">
+						<label for="field-reg-username" class="form-label">Username:</label>
+
+						<div class="form-controls">
+							<input type="text" class="field" id="field-reg-username" formControlName="username">
+							<span class="text-danger" *ngIf="!userToRegister.controls['username'].valid && userToRegister.controls['username'].touched">Please enter valid username</span>
+
+						</div>
+					</div>
+
+					<div class="form-row">
+						<label for="field-reg-mail" class="form-label">E-mail:</label>
+
+						<div class="form-controls">
+							<input type="email" class="field" id="field-reg-mail" formControlName="email">
+							<span class="text-danger" *ngIf="!userToRegister.controls['email'].valid && userToRegister.controls['email'].touched">Please enter valid E-mail</span>
+
+						</div>
+					</div>
+
+					<div class="form-row">
+						<label for="field-reg-pass" class="form-label">Password:</label>
+
+						<div class="form-controls">
+							<input type="password" class="field" id="field-reg-pass" placeholder="At least 6 characters" formControlName="password">
+							<span class="text-danger" *ngIf="!userToRegister.controls['password'].valid && userToRegister.controls['password'].touched">Please enter valid password</span>
+
+						</div>
+					</div>
+
+					<div class="form-row">
+						<label for="field-reg-pass2" class="form-label">Repeat Password:</label>
+
+						<div class="form-controls">
+							<input type="password" class="field" id="field-reg-pass2" formControlName="confirmedPassword">
+							<span class="text-danger" *ngIf="userToRegister.controls['confirmedPassword'].value != userToRegister.controls['password'].value && userToRegister.controls ['confirmedPassword'].touched ">Passwords do not match</span>
+						</div>
+					</div>
+
+					<div class="form-row form-actions">
+						<button [disabled]="!userToRegister.valid||userToRegister.controls['confirmedPassword'].value != userToRegister.controls['password'].value"
+						 type="submit" class="form-btn">SIGN UP</button>
+
+						<span class="text-danger" *ngIf="error">{{errorMessage}}</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
