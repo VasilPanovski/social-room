@@ -25,9 +25,9 @@ export class AuthenticationService {
     register(userToRegister: Object): Observable<any> {
         return this.http.post(RegisterUrl, userToRegister)
             .map((res: Response) => {
-                let body = res.json();
+                console.log(res)
+                let body = JSON.parse(res['_body']);
                 let token = body.token;
-                console.log(body)
                 localStorage.setItem(AuthToken, token);
                 return {
                     status: res.status,

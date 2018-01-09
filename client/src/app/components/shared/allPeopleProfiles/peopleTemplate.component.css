@@ -1,0 +1,63 @@
+.section-athletes { padding-top: 50px; } 
+
+.athletes { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; list-style: none; margin: 0 -5px; }
+.athletes .athlete { width: 16.66%; margin-bottom: 20px; padding: 0 5px; }
+
+.athlete .athlete-image { position: relative; }
+.athlete .athlete-inner { position: relative; padding: 10px 10px 0; }
+
+.athletes .athlete-overlay { position: absolute; top: -20px; left: -20px; width: 400px; height: 256px; z-index: 10; background: rgba(0,0,0,.8); border: 1px solid rgba(255,255,255,.8); opacity: 0; visibility: hidden; transition: opacity .5s, visibility .5s; overflow: hidden; padding: 10px; } 
+.athletes .athlete-overlay:after { content: ''; line-height: 0; display: table; clear: both; }
+.athletes .athlete-overlay .athlete-content { width: calc(100% - 200px); float: right; position: relative; }
+
+.athlete:hover { z-index: 20; position: relative; } 
+.athlete:hover .athlete-inner { position: relative; z-index: 10; }
+.athlete:hover .athlete-image { z-index: 15; }
+.athlete:hover .athlete-overlay { opacity: 1; visibility: visible; }
+
+.athlete .athlete-overlay .hot-rated-icon { position: absolute; left: -40px; top: 30px; } 
+.athlete .athlete-overlay .hot-rated-icon small { display: block; text-align: center;width: 40px;
+	font-size: 14px; text-transform: uppercase; font-weight: 700; color: #fff; position: relative; left: -7px; } 
+
+.athletes .athlete-image .athlete-loc { position: absolute; bottom: -7px; right: 50%; margin-right: -15px; width: 30px; }
+.athletes .athlete-image .image { display: block; width: 100%; padding-bottom: 100%; border-radius: 50%; background-size: cover; background-position: center; -webkit-transition: all .5s; 
+     -o-transition: all .5s; 
+        transition: all .5s; }
+.athletes .athlete .btn-black-small { background: #000; display: block; text-decoration: none; position: relative; left: 11px; padding: 10px 27px; font-size: 14px; color: #fff; text-align: left; transition: background .3s; border: 1px solid rgba(255,255,255,.4); }
+.athletes .athlete .btn-black-small:hover { background: #2d2d2d; }
+.athletes .athlete .athlete-rang { text-align: center; display: block; margin-bottom: 10px; }
+.athletes .athlete .athlete-rang em { display: block; font-size: 25px; font-style: normal; font-weight: 700; line-height: 1; }
+.athletes .athlete .athlete-category { margin-bottom: 5px; }
+.athletes .athlete .athlete-category > span { display: block; color: #fff; padding-left: 15px; }
+.athletes .athlete .athlete-category > span:after { content: ''; line-height: 0; display: table; clear: both; }
+.athletes .athlete .athlete-category > span small { float: left; }
+.athletes .athlete .athlete-category > span em { float: right; font-style: normal; }
+.athletes .athlete-name { display: block; text-align: center; padding: 20px 0 10px; font-size: 16px; font-weight: 600; position: relative; z-index: 15; }
+.athletes .athlete:hover .athlete-name  { color: #fff;  }
+
+@media (max-width: 1023px) {
+	.athletes .athlete { width: 20%; }
+}
+
+@media (max-width: 767px) {
+	.athletes .athlete { width: 25%; }
+	.athletes .athlete-name { font-size: 15px; font-weight: 500; }
+}
+
+@media(max-width: 480px){
+	.athletes .athlete { width: 50%; }
+}
+
+/* ------------------------------------------------------------ *\
+	people search
+\* ------------------------------------------------------------ */
+
+.section-athletes { padding-top: 0px;  } 
+.section-athletes .search-people { background: #000; color: #fff;  width: 100%; margin-bottom: 50px; }
+.section-athletes .search-people ul { display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; justify-content: center; align-content: center; }
+.section-athletes .search-people ul span ,
+.section-athletes .search-people ul strong { font-weight: 400; font-size: 14px; text-transform: capitalize; display: inline-block; padding: 10px; }
+.section-athletes .search-people ul strong  { cursor: pointer; }
+.section-athletes .search-people ul li.current strong { background: #bb0909; }
+
+

@@ -1,3 +1,50 @@
-<p>
-  login works!
-</p>
+<section class="section section-login">
+	<div class="shell">
+		<div class="widget widget-singin">
+			<div class="widget-body">
+				<div class="form-singin">
+					<form [formGroup]="userToLogin" #loginForm="ngForm" (ngSubmit)="login()">
+						<span id="reauth-email" class="reauth-email"></span>
+
+						<div class="form-row">
+							<label for="field-mail" class="form-label">Username:</label>
+
+							<div class="form-controls">
+								<input type="text" class="field" id="inputEmail" formControlName="username" required autofocus>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<label for="field-pass" class="form-label">Password:</label>
+
+							<div class="form-controls">
+								<input type="password" class="field" id="inputPassword" formControlName="password" required>
+							</div>
+						</div>
+
+						<div class="form-row">
+							<div class="checkbox">
+								<input type="checkbox" name="field-1#" id="field-1#">
+
+								<label class="form-label" for="field-1#"><span></span>Remember me</label>
+							</div>
+						</div>
+						<p class="text-danger" *ngIf="error">{{errorMessage}}</p>
+
+
+						<div class="form-row form-actions">
+							<button type="submit" value="Submit" class="form-btn">LOGIN</button>
+
+							<p class="">
+								<a href="#">Forgot password</a>, or <a routerLink="/register">New User</a>?
+							</p>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.shell -->
+</section>
+<!-- /.section -->
+

@@ -1,0 +1,32 @@
+.form-cols .form-col-1of2 { width: 50%; }
+.form-cols .form-col-1of3 { width: 33.33%; }
+
+.profile-avatar { padding-bottom: 30px; padding-top: 30px; }
+
+.form-label { padding-bottom: 5px; }
+
+.textarea { padding: 10px; }
+.field { padding: 0 10px; } 
+.field::-webkit-input-placeholder { color: rgba(0,0,0,.4); }
+.field::-moz-placeholder { color: rgba(0,0,0,.4); }
+.field:-ms-input-placeholder { color: rgba(0,0,0,.4); }
+.field:-moz-placeholder { color: rgba(0,0,0,.4); }
+
+.form-btn { padding: 16px; }
+
+.upload-file-controls .form-label { padding: 16px; }
+
+.upload-drop-zone {
+    color: #ccc;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 200px;
+    text-align: center
+}
+.another-file-over-class {border: dashed 3px green; }
+
+.uploaded-images { margin: 20px -10px 0;  list-style: none; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; flex-wrap: wrap; }
+.uploaded-images li { width: 20%; justify-content: center; align-items: center; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; padding: 10px; }
+.uploaded-images li span { border: 1px solid rgba(0,0,0,.5); display: block; height: 100%; width: 100%; position: relative;  }
+.uploaded-images li small { cursor: pointer; position: absolute; top: 0; right: 0; background: #fff; text-align: center;width: 20px; height: 20px; }
+.uploaded-images li img { width: 100%; height: auto;  }

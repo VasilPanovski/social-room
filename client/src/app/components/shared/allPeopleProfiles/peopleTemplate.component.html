@@ -1,0 +1,90 @@
+<section class="section section-athletes" style="background-image: url(assets/css/images/backgrounds/section-landing-bg_02.jpg)">
+	<nav class="search-people">
+        <div class="shell">
+            <ul>
+                <li>
+                    <span>
+                        show:
+                    </span>
+                </li>
+
+                <li  [ngClass]="{'current': filterName === 'all'}">
+                    <strong (click)="changeFilter('all')">
+                        All
+                    </strong>
+                </li>
+
+                <li [ngClass]="{'current': filterName === 'm'}">
+                    <strong (click)="changeFilter('m')">
+                        male  
+                    </strong>
+                </li>
+
+                <li [ngClass]="{'current': filterName === 'f'}">
+                    <strong (click)="changeFilter('f')">
+                        female
+                    </strong>
+                </li>
+
+                <li [ngClass]="{'current': filterName === 'other'}">
+                    <strong (click)="changeFilter('other')">
+                        other 
+                    </strong>
+                </li>
+
+                <li>
+                    <span>
+                        advanced search
+                    </span>
+                </li>   
+            </ul>
+        </div>
+    </nav>
+    
+	<div class="shell"> 
+		<div class="section-body">
+			<div class="tabs-content">
+				<div class="tab current">
+					<ul class="athletes">
+						<li class="athlete" *ngFor="let pro of peopleToShow">
+							<div class="athlete-inner">
+								<div class="athlete-image">
+									<span class="image" [style.background-image]="'url('+pro.profilPicUrl+')'"></span>
+								</div> 
+								<strong class="athlete-name">{{pro.firstName}} {{pro.lastName}}</strong>
+
+								<div class="athlete-overlay">
+									<div class="athlete-content">
+										<span class="athlete-rang">
+											<a [routerLink]="" class="btn-black-small">
+											  Make introduction
+											</a>
+										</span>
+
+										<span class="athlete-rang">
+											<a [routerLink]="['/profile/', pro._id]" class="btn-black-small">
+											  Full profile
+											</a>
+										</span>
+
+										<span class="athlete-rang">
+											<a [routerLink]="" (click)="inviteToChat(pro._id)" class="btn-black-small">
+											  Invite to chat
+											</a>
+										</span>
+
+										<span class="athlete-rang">
+											<a [routerLink]="" class="btn-black-small">
+											  Rate {{pro.firstName}}
+											</a>
+										</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

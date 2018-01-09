@@ -10,8 +10,8 @@ import { UserService } from '../../services/user.service';
 import { HeaderComponent } from '../../components/shared/header/header.component';
 import { FooterComponent } from '../../components/shared/footer/footer.component';
 import { AuthenticationService } from '../../services/authentication.service';
-//import { NotificationService } from '../services/notificationService';
-//import { ChatService } from '../chat/chat.service';
+import { NotificationService } from '../../services/notification.service';
+import { ChatService } from '../chat/chat.service';
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import { AuthenticationService } from '../../services/authentication.service';
     HttpHeadersService,
     UserService,
     AuthenticationService,
-    //ChatService
+    NotificationService,
+    ChatService
   ]
 })
 export class SharedModule { }

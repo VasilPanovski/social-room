@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { HttpHeadersService } from './http-headers.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -8,7 +9,7 @@ import { AuthenticationService } from './authentication.service'
 
 const UserByIdUrl: string = Constants.hostUrl + 'api/users/user/';
 const SetProfileUrl: string = Constants.hostUrl + 'api/users/user/set/';
-const GetLoggedUserUrl: string = Constants.hostUrl + 'api/auth/getLoggedUser';
+const GetLoggedUserUrl: string = Constants.hostUrl + 'api/loggedUser';
 const AuthToken: string = Constants.authToken;
 const PeopleUrl: string = Constants.hostUrl + 'api/users/people';
 
@@ -17,7 +18,9 @@ export class UserService {
     public loggedUser: any;
 
     constructor(
-        private http: Http) {
+        private http: Http,
+        public httpHeaderService: HttpHeadersService
+    ) {
     }
 
     public getAllUsers(): Observable<any> {
@@ -32,18 +35,16 @@ export class UserService {
     public getLoggedUser(): Observable<any> {
         let token = localStorage.getItem(AuthToken);
         let jwt =  {
-            'token': token
+            "token": token
         }
 
-        return this.http.post(GetLoggedUserUrl, jwt, {withCredentials: true})
-
+        return this.http.post(GetLoggedUserUrl, jwt)
             .map((res: Response) => {
-                let body = res.json();
-                this.loggedUser = body.user;
-
+                this.loggedUser = JSON.parse(res['_body']);
+                console.log(this.loggedUser)
                 return {
                     status: res.status,
-                    user: body.user
+                    user: this.loggedUser
                 };
             });
     }
@@ -65,7 +66,7 @@ export class UserService {
 
     public updateSettings(id: any, settings: any): Observable<any> {
 
-        return this.http.put(`${UserByIdUrl}${id}`, settings, {withCredentials: true})
+        return this.http.put(`${UserByIdUrl}${id}`, settings, {'withCredentials': true})
             .map((res: Response) => {
                 return { status: res.status, body: res.json() }
             })

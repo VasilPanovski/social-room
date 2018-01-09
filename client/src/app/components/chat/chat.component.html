@@ -1,0 +1,123 @@
+<!-- <navigation-template></navigation-template>
+
+<allChats-template>
+</allChats-template> -->
+
+<div class="chat-wrapper" *ngIf="user && chatId">
+  <!--MESSAGE OUTPUT-->
+  <!-- <video-chat *ngIf="showVideoChat" [initializer]="isInitializer" [theOtherUserID]="theOtherUserID" [weRTCsdpOffer]="weRTCsdpOffer"></video-chat>
+
+  <div class="allMessages chatUsers" *ngIf="messages">
+    <div *ngFor="let message of messages" style="width: 100%">
+      <div *ngIf="message.message.plainText; else htmlContent">
+        <div class="chatUser">
+          <div class="chatUser-inner">
+            <div class="chatUser-image">
+              <span class="image" [style.background-image]="'url(../../'+userImages[message.senderId]+')'"></span>
+            </div>
+          </div>
+        </div>
+        {{message.message.content}}
+      </div>
+      <ng-template #htmlContent>
+          <div class="chatUser">
+            <div [innerHtml]="message.message.content" style="width:120px; height:70px; margin: 15px 5px" (click)="message.message.imageUrl && onNavigate(message.message.imageUrl)">
+              <div class="chatUser-inner">
+                <div class="chatUser-image">
+                  <span class="image" [style.background-image]="'url(../../'+userImages[message.senderId]+')'"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+      </ng-template>
+    </div>
+    <div class="space"></div>
+  </div>
+
+  <div id="chat-wrapper" class="ui segment">
+
+    <form class="ui form" [formGroup]="messageToSend" #chat="ngForm" (ngSubmit)="sendMessage()">
+      <div class="ui grid">
+        <ul class="athletes">
+          <li class="athlete">
+            <div class="athlete-inner">
+              <div class="athlete-image">
+                <span class="image" [style.background-image]="'url(../../'+user.profilPicUrl+')'"></span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="ten wide column">
+          <div style="text-align: center">
+            <div *ngIf="!plainText; then imageBlock else textBlock"></div>
+            <ng-template #imageBlock>
+              <div id="message"
+                (emojiPickerCaretEmitter)="handleCurrentCaret($event)"
+                (input)="content = $event.target.textContent"
+                [innerHtml]="content"
+                contenteditable="true"
+                (keydown)="handleEnterKey($event)"
+                disabled="false"
+                style=
+                "-moz-appearance: textfield-multiline;
+                -webkit-appearance: message;
+                border: 1px solid gray;
+                font: medium -moz-fixed;
+                font: -webkit-small-control;
+                height: 250px;
+                overflow: auto;
+                padding: 2px;
+                resize: both;
+                width: 400px;">
+              </div>
+            </ng-template>
+            <ng-template #textBlock>
+              <div id="message"
+                (emojiPickerCaretEmitter)="handleCurrentCaret($event)"
+                (input)="content = $event.target.textContent"
+                [textContent]="content"
+                (keydown)="handleEnterKey($event)"
+                contenteditable="true"
+                style=
+                "-moz-appearance: textfield-multiline;
+                -webkit-appearance: message;
+                border: 1px solid gray;
+                font: medium -moz-fixed;
+                font: -webkit-small-control;
+                height: 250px;
+                overflow: auto;
+                padding: 2px;
+                resize: both;
+                width: 400px;">
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button id="submit" type="submit" class="ui icon button ">
+          <i class="send icon"></i>
+        </button>
+        <input type="file" ng2FileSelect [uploader]="uploader" accept="image/*" (change)="upload()"/>
+        <a id="emoji-btn">
+          <i
+          class="emoji-toggle-button"
+          (click)="toggled = !toggled"
+          [(emojiPickerIf)]="toggled"
+          [emojiPickerPreserveSelection]="false"
+          [emojiPickerDirection]="direction"
+          [emojiPickerAutofocus]="true"
+          (emojiPickerSelect)="handleSelection($event)">😄</i>
+        </a>
+      </div>
+    </form>
+    <button (click)="inviteToVideoChat()">Create video chat room</button>
+
+  </div> -->
+
+
+  <div style="text-align: center">
+    <small style="font-size: 0.6em">
+    </small>
+  </div>
+</div>

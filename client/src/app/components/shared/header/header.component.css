@@ -1,6 +1,6 @@
 
 .header { font-family: 'Gotham', sans-serif; }
-.header .header-content { background: #0f2e05; padding: 10px 0; color: #fff; }
+.header .header-content { background: #878886; padding: 10px 0; color: #fff; }
 .header .header-content .shell { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; justify-content: space-between; }
  
 .header .header-col-size3 { width: 200px; text-align: right; }

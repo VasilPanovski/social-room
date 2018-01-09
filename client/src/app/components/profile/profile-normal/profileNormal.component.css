@@ -1,0 +1,57 @@
+.section-head { padding: 60px 0; background-position: center; background-size: cover; }
+
+.profile-primary-image { margin: 0 auto 40px; height: 300px; width: 300px; position: relative; }
+.profile-primary-image > img { position: absolute; bottom: 30px; right: 30px; }
+.profile-primary-image .image { height: 300px; width: 300px; background-size: cover; background-position: center; border-radius: 50%;
+	overflow: hidden; border: 4px solid #fff; box-shadow: 0px 0px 15px rgba(0,0,0,.5); } 
+
+.profile-name { text-align: center; color: #fff; text-shadow: 3px 3px rgba(0,0,0,.3); }
+
+.list-living-postition { list-style: none; text-align: center; padding: 15px 0; } 
+.list-living-postition li { display: inline-block; margin: 0 10px;font-size: 16px; letter-spacing: 0.02em; text-transform: capitalize;  }
+
+.section-profile-basic { font-family: 'Gotham', sans-serif; }
+
+.profile-name { font-weight: 400; }
+
+.list-living-postition li { font-size: 16px; }
+.list-living-postition li strong { font-weight: 600; }
+.list-living-postition li i { font-weight: 400; margin-left: 5px; }
+
+.section-body { background: #000; color: #fff; padding: 50px 0; font-size: 14px; }
+.section-aside   { padding-right: 10px;  }
+.section-aside h3 { margin-bottom: 25px; font-weight: 500; font-size: 20px; }
+.section-aside h5 { margin-bottom: 16px; font-weight: 500; font-size: 15px; }
+.section-body .shell:after { content: ''; line-height: 0; display: table; clear: both; }
+.section-body .section-aside { float: left; width: 25%; }
+.section-body .section-aside h3 { text-transform: uppercase; }
+.section-body .section-aside h3 span { color: #c50202; }
+.section-body .section-content { float: left; width: 65%; }
+
+.person-info-list { list-style: none; line-height: 1.8; text-transform: capitalize; }
+.person-info-list strong { font-weight: 500; }
+
+.person-info-text { margin-bottom: 20px; }
+
+.image-primary { height: 300px; display: block; background-size: cover; background-position: center; margin-bottom: 12px; }
+
+.list-images { margin: 0 -7px; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; flex-wrap: wrap; }
+.list-images li { padding: 0 7px; width: 25%; margin-bottom: 9px; }
+.list-images li span { height: 110px; display: block; background-size: cover; background-position: center; cursor: pointer; }
+.list-videos { margin: 0 -7px 35px; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; flex-wrap: wrap; }
+.list-videos li { width: 50%; padding: 0 7px; position: relative; }
+.list-videos li small { position: absolute; top: 0; left: 7px; right: 7px; bottom: 0; cursor: pointer; }
+.list-videos iframe { width: 100% !important; height: auto !important; }
+
+.list-buttons { display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; list-style: none; margin: 0 -5px; }
+.list-buttons li { width: 100%; padding: 0 5px; }
+.list-buttons li:first-child { width: 120%; }
+.list-buttons li a { width: 100%; border: 1px solid rgba(255,255,255,.5); font-weight: 400; text-align: center; padding: 10px 0; }
+
+
+.popup-video-wrap { position: fixed; top: 0; left: 0; width: 100%; min-height: 100vh; height: 100%; background: rgba(0,0,0,.8); display: -webkit-flex; 
+display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; justify-content: center; align-items: center; }
+.popup-video { max-width: 600px; padding: 30px; background: #fff; position: relative; }
+.popup-video .close { position: absolute; top: 0; right: 0; width: 25px; height: 25px; background: #fff; text-align: center; cursor: pointer; line-height: 25px; }
+
+

@@ -4,6 +4,7 @@
 			<div class="shell">
 				<div class="header-col-size1">
 					<a routerLink="/home" class="logo">
+						Social Room
 					</a>
 				</div>
 
@@ -29,7 +30,7 @@
 								<li>
 									<a>
 										<strong>Welcome!</strong>
-										Nice to see you in PFL
+										Nice to see you...
 
 									</a>
 								</li>
@@ -42,7 +43,7 @@
 
 					<nav class="profile" [ngClass]="{'active': profileDropdown === true}">
 						<a class="avatar" [style.background-image]="'url('+user.profilPicUrl+')'" (click)="toggleProfileDropdown()"></a>
-
+						
 						<ul class="profile-dropdown">
 							<li>
 								<a [routerLink]="['/profile/pro', user.id]" *ngIf="isPro; else amateurTemplate" (click)="toggleProfileDropdown()">
@@ -54,7 +55,7 @@
 								<ng-template #amateurTemplate>
 									<a [routerLink]="['/myprofile', user.id]" (click)="toggleProfileDropdown()">
 										<i class="fa fa-user-o" aria-hidden="true"></i>
-
+										
 										<span>View profile </span>
 									</a>
 								</ng-template>
@@ -77,34 +78,6 @@
 							</li>
 						</ul>
 					</nav>
-
-					<!-- <a href="#" class="btn-search">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</a> -->
-				</div>
-
-				<!--IF No User-->
-				<div class="header-col-size3" *ngIf="!user">
-					<a routerLink="/register" class="btn-sing">
-						<strong>
-							Sign Up
-						</strong>
-					</a>
-
-					<a href="#" class="btn-search">
-						<i class="fa fa-search" aria-hidden="true"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<div class="header-inner-mobile">
-			<div class="shell">
-				<div class="btn-menu" [ngClass]="{'open': mobileOpen === 'open'}" (click)="openMobileMenu()">
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
 				</div>
 			</div>
 		</div>
@@ -121,40 +94,10 @@
 							</li>
 
 							<li>
-								<a routerLink="#">
-									The Mission
-								</a>
-							</li>
-
-							<li>
 								<a routerLink="/people">
 									People
 								</a>
 							</li>
-
-							<li>
-								<a routerLink="#">
-									Sweet Revenge Corner
-								</a>
-							</li>
-
-              <li>
-                <a routerLink="/blog">
-                  Blog
-                </a>
-              </li>
-
-              <li>
-                <a routerLink="#">
-                  Forum
-                </a>
-              </li>
-
-              <li>
-                <a routerLink="#">
-                  Go Premium
-                </a>
-              </li>
 
 						</ul>
 					</nav>
@@ -167,13 +110,6 @@
 								<i class="fa fa-facebook" aria-hidden="true"></i>
 							</a>
 						</li>
-
-						<!--<li>-->
-							<!--<a href="#" target="_blank">-->
-								<!--<i class="fa fa-twitter" aria-hidden="true"></i>-->
-							<!--</a>-->
-						<!--</li>-->
-
 						<li>
 							<a href="#" target="_blank">
 								<i class="fa fa-youtube" aria-hidden="true"></i>
@@ -190,7 +126,7 @@
 			</div>
 		</div>
 
-		<div class="navigation-secondary">
+		<!-- <div class="navigation-secondary">
 			<div class="shell">
 				<nav class="nav-secondary">
 					<ul>
@@ -206,6 +142,6 @@
 					</ul>
 				</nav>
 			</div>
-		</div>
+		</div> -->
 	</header>
 </div>

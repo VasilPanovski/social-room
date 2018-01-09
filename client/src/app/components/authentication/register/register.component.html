@@ -47,7 +47,7 @@
 						<button [disabled]="!userToRegister.valid||userToRegister.controls['confirmedPassword'].value != userToRegister.controls['password'].value"
 						 type="submit" class="form-btn">SIGN UP</button>
 
-						<span class="text-danger" *ngIf="error">{{errorMessage}}</span>
+						<p class="text-danger" *ngIf="error">{{errorMessage}}</p>
 					</div>
 				</form>
 			</div>

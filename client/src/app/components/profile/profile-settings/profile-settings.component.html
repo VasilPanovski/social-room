@@ -1,0 +1,128 @@
+<div class="wrapper">
+	<div class="main">
+		<!-- <banners-top></banners-top> -->
+
+		<section class="section-profile">
+			<div class="shell">
+				<header class="section-head">
+					<p *ngIf="isError">{{errorMessage}}</p>
+					<h2 class="section-title">
+						PROFILE SETTINGS
+					</h2>
+				</header>
+				<div class="section-body">
+					<div class="form-profile-settings">
+						<div *ngIf="showImageUploader">
+							<input type="file" ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" (change)="upload(); toggleImageUploader()">
+						</div> 
+
+						<form [formGroup]="userSettingsToUpdate" (ngSubmit)="updateSettings()">
+							<div class="form-head" *ngIf="!imageUploading; else uploadingTemplate">
+								<div class="profile-avatar">
+									<span class="image" id="myImg" [style.background-image]="'url('+imageUrl+')'"></span>
+
+									<div class="upload-file-controls">
+										<input type="hidden" formControlName="profilePicUrl" [value]="imageUrl" [(ngModel)]="imageUrl">
+										<label for="upload-file" class="form-label" (click)="toggleImageUploader()">UPLOAD NEW PICTURE</label>
+									</div>
+								</div>
+							</div>
+							<ng-template #uploadingTemplate>
+								<div class="form-head">
+									<div class="page-loader"></div>
+								</div>
+							</ng-template>
+
+							<div class="form-body">
+								<div class="form-row">
+									<div class="form-cols">
+										<div class="form-col form-col-1of3">
+											<label for="field-name" class="form-label">Username</label>
+
+											<div class="form-controls">
+												<input name="username" type="text" class="field" id="field-name" formControlName="username">
+											</div>
+										</div>
+
+										<div class="form-col form-col-1of3">
+											<label for="field-mail" class="form-label">E-mail</label>
+
+											<div class="form-controls">
+												<input type="email" class="field" name="field-mail" id="field-mail" formControlName="email">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								  <div class="form-row">
+									<div class="form-cols">
+										 <div class="form-col form-col-1of3">
+											<label for="field-country" class="form-label">City</label>
+
+											<div class="form-controls select-holder">
+												<input type="text" id="field-country" class="select" formControlName="location">
+											</div>
+										</div> 
+
+										<div class="form-col form-col-1of3">
+											<label for="field-birth-date" class="form-label">Birth Date</label>
+
+											<div class="form-controls select-holder">
+												<input type="date" class="field" id="field-birth-date" formControlName="dateOfBirth">
+											
+											</div>
+										</div>
+									 </div>
+								</div>  
+
+								<div class="form-row">
+									<div class="form-cols">
+										<div class="form-col form-col-1of3">
+											<label for="field-gender" class="form-label">Gender</label>
+											<div class="form-controls select-holder">
+												<select name="field-gender" id="field-gender" class="select" formControlName="gender">
+													<option *ngFor="let gender of genders" [value]="gender.value">{{gender.display}}</option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<label for="field-new-pass" class="form-label">New Password</label>
+
+									<div class="form-controls">
+										<input name="newPassword" type="password" class="field" id="field-new-pass" formControlName="newPassword">
+										<span class="text-danger" *ngIf="!userSettingsToUpdate.controls['newPassword'].valid && userSettingsToUpdate.controls['newPassword'].touched">Password not valid</span>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<label for="signupPasswordagain" class="form-label">Confirm Password</label>
+
+									<div class="form-controls">
+										<input id="signupPasswordagain" type="password" class="field" formControlName="confirmedPassword">
+										<span class="text-danger" *ngIf="userSettingsToUpdate.controls['confirmedPassword'].value != userSettingsToUpdate.controls['newPassword'].value && userSettingsToUpdate.controls['confirmedPassword'].touched">Passwords do not match</span>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<button type="submit" value="Submit" class="form-btn">
+									UPDATE SETTINGS
+								</button>
+								</div>
+							</div>
+						</form>
+						<p *ngIf="isError">{{errorMessage}}</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- <banners-bottom></banners-bottom> -->
+	</div>
+<!-- 
+	<subscribe-template></subscribe-template> -->
+
+	<app-footer></app-footer>
+</div>

@@ -1,0 +1,18 @@
+<div class="allChats">
+<ul class="athletes" *ngFor="let chat of allChats">
+  <li class="chat-select ">
+    <div class="athlete-inner">
+      <div class="athlete-image">
+        <span class="image" [style.background-image]="'url(../../'+chat.user.image+')'"></span>
+      </div>
+    </div>
+    <div>
+      <a [routerLink]="['/chat/'+chat._id]">
+        <strong class="athlete-name">{{ chat.user.username }}</strong>
+      </a>
+      <div *ngIf="chat.messages[0]">{{chat.messages[0].message}}</div>
+      <button (click)="deleteChat(chat._id)">X</button>
+    </div>
+  </li>
+</ul>
+</div>

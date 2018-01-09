@@ -8,7 +8,7 @@ export class HttpHeadersService {
         headersObject['Content-Type'] = 'application/json';
         
         if (token) {
-            headersObject['Authorization'] = token;
+            headersObject['Authorization'] = 'Bearer ' + token;
         }
 
         let headers: Headers = new Headers(headersObject);

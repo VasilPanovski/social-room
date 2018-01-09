@@ -39,10 +39,9 @@ export class RegisterComponent implements OnInit {
         this.authService
             .register(this.userToRegister.value)
             .subscribe((res: any) => {
-                this.userId = res.body.id;
-                this.userEmail = res.body.email;
-                console.log(res.body);
-
+                this.userId = res.body['id'];
+                this.userEmail = res.body['email'];
+                console.log(this.userEmail)
                 this.router.navigate(['/home']);
               },
             (err: any) => {
@@ -52,7 +51,7 @@ export class RegisterComponent implements OnInit {
                 setTimeout(() => {
                     this.error = false;
 
-                }, 3000);
+                }, 5000);
             });
     }
 

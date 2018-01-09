@@ -1,26 +1,26 @@
-<div class="main">
+
+    <div class="main">
   
           <section class="section-home-page" >
               <div class="shell">
-                  <div class="socials" *ngIf="user; else noUserTemplate;"></div>
-                      <ng-template #noUserTemplate>
-                         
-                      </ng-template> 
+                  <div class="socials" ></div>
   
+                    <div *ngIf="!user">
                       <div class="section-head">
                           <h4 class="section-title">
                               Welcome to this social room.  
                           </h4> 
                           <p>
-                            You must first login to the room. Please Sign Up.
+                            You must first login to the room. Please Sign In.
                         </p>
   
                           <p class="text-center">
-                            <a [routerLink]="register" class="btn">
-                              Sign Up
+                            <a routerLink="/login" class="btn">
+                              Sign In
                             </a>
                           </p>
                       </div> 
+                    </div>
               </div> 
           </section>
 
