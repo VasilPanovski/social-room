@@ -1,0 +1,33 @@
+<div class="col-md-6">
+  <div *ngFor="let notification of notifications">
+    {{notification.notification.notificationTitle}} -
+    {{notification.notification.notificationText}}
+  </div>
+  <!--<input [(ngModel)]="message"  /><button (click)="sendNotification()">Send</button>-->
+
+  <form [formGroup]="notificationToSend" #sendNotificationForm="ngForm" (ngSubmit)="sendNotification();">
+
+    <div class="form-group">
+      <label for="user">Select user</label>
+      <select id="user" class="form-control" formControlName="user">
+        <option value="">All</option>
+        <option *ngFor="let user of users" value="{{user._id}}">{{user.username}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" placeholder="Title" formControlName="notificationTitle">
+    </div>
+
+    <div class="form-group">
+      <label for="textField">Text</label>
+      <textarea class="form-control" id="textField" rows="10" cols="30" formControlName="notificationText">
+    </textarea>
+    </div>
+
+    <input type="submit" class="btn btn-success btn-raised" name="submitArticle">
+    <span>{{success}}</span>
+
+  </form>
+</div>

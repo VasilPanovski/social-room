@@ -8,6 +8,7 @@ import com.socialroom.models.bindingModels.LoginModel;
 import com.socialroom.models.bindingModels.UpdateUserModel;
 import com.socialroom.models.bindingModels.UserRegistrationModel;
 import com.socialroom.models.viewModels.LoggedUser;
+import com.socialroom.models.viewModels.PeopleModel;
 import com.socialroom.models.viewModels.UserViewModel;
 import com.socialroom.services.interfaces.SecurityService;
 import com.socialroom.services.interfaces.UserService;
@@ -20,11 +21,15 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.Collections;
+import java.util.List;
 
 
 @RestController
@@ -92,6 +97,29 @@ public class UserController {
     @PutMapping("/users/user/{id}")
     public ResponseEntity updateUser(@RequestBody UpdateUserModel userModel, @PathVariable(name = "id") Long id) {
         this.userService.updateUser(userModel, id);
+        LoggedUser updatedUser = this.userService.getLoggedUser(userModel.getUsername());
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+    }
+
+    @GetMapping("/users/user/{userId}")
+    public ResponseEntity getUserData(@PathVariable(name = "userId") Long userId) {
+        LoggedUser userData = this.userService.getUserData(userId);
+        return new ResponseEntity<>(userData, HttpStatus.OK);
+    }
+
+    @GetMapping("/users/people")
+    public ResponseEntity getAllUsers() {
+        List<PeopleModel> people = this.userService.getAllUsers();
+        return new ResponseEntity<>(people, HttpStatus.OK);
+    }
+
+
+    @GetMapping("logout")
+    public ResponseEntity logout(HttpServletRequest request, HttpServletResponse response) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
         return new ResponseEntity(HttpStatus.OK);
     }
 

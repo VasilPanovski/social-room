@@ -14,24 +14,17 @@
                     </strong>
                 </li>
 
-                <li [ngClass]="{'current': filterName === 'm'}">
-                    <strong (click)="changeFilter('m')">
+                <li [ngClass]="{'current': filterName === 'Male'}">
+                    <strong (click)="changeFilter('Male')">
                         male  
                     </strong>
                 </li>
 
-                <li [ngClass]="{'current': filterName === 'f'}">
-                    <strong (click)="changeFilter('f')">
+                <li [ngClass]="{'current': filterName === 'Female'}">
+                    <strong (click)="changeFilter('Female')">
                         female
                     </strong>
                 </li>
-
-                <li [ngClass]="{'current': filterName === 'other'}">
-                    <strong (click)="changeFilter('other')">
-                        other 
-                    </strong>
-                </li>
-
                 <li>
                     <span>
                         advanced search
@@ -49,9 +42,9 @@
 						<li class="athlete" *ngFor="let pro of peopleToShow">
 							<div class="athlete-inner">
 								<div class="athlete-image">
-									<span class="image" [style.background-image]="'url('+pro.profilPicUrl+')'"></span>
+									<span class="image" [style.background-image]="'url('+pro.profilePicUrl+')'"></span>
 								</div> 
-								<strong class="athlete-name">{{pro.firstName}} {{pro.lastName}}</strong>
+								<strong class="athlete-name">{{pro.username}}</strong>
 
 								<div class="athlete-overlay">
 									<div class="athlete-content">
@@ -62,20 +55,14 @@
 										</span>
 
 										<span class="athlete-rang">
-											<a [routerLink]="['/profile/', pro._id]" class="btn-black-small">
+											<a [routerLink]="['/profile', pro.id]" class="btn-black-small">
 											  Full profile
 											</a>
 										</span>
 
 										<span class="athlete-rang">
-											<a [routerLink]="" (click)="inviteToChat(pro._id)" class="btn-black-small">
+											<a routerLink="" (click)="inviteToChat(pro.id)" class="btn-black-small">
 											  Invite to chat
-											</a>
-										</span>
-
-										<span class="athlete-rang">
-											<a [routerLink]="" class="btn-black-small">
-											  Rate {{pro.firstName}}
 											</a>
 										</span>
 									</div>

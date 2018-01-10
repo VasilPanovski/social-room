@@ -24,14 +24,15 @@ public class User implements UserDetails {
     private String password;
 
     @Column(name = "profile_pic")
-    private String profilPicUrl;
+    private String profilePicUrl;
 
     @Column(name = "birth_date")
     private String dateOfBirth;
 
     private String location;
 
-    private String gender;
+    @Enumerated
+    private GenderType gender;
 
     @Column(name = "registered_date")
     private Date dateRegistered;
@@ -46,7 +47,7 @@ public class User implements UserDetails {
     )
     private Set<Authority> authorities;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
             name = "users_chats",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -57,12 +58,12 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "receiver")
     private List<ChatMessage> chatMessages;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "sender")
     private List<Notification> notifications;
 
     public User() {
         this.dateRegistered = new Date();
-        this.profilPicUrl = "assets/css/default-user-image.png";
+        this.profilePicUrl = "assets/css/default-user-image.png";
         this.authorities = new HashSet<>();
         this.chats = new HashSet<>();
         this.chatMessages = new ArrayList<>();
@@ -133,19 +134,19 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public String getProfilPicUrl() {
-        return profilPicUrl;
+    public String getProfilePicUrl() {
+        return profilePicUrl;
     }
 
-    public void setProfilPicUrl(String profilPicUrl) {
-        this.profilPicUrl = profilPicUrl;
+    public void setProfilePicUrl(String profilPicUrl) {
+        this.profilePicUrl = profilPicUrl;
     }
 
-    public String getGender() {
+    public GenderType getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(GenderType gender) {
         this.gender = gender;
     }
 

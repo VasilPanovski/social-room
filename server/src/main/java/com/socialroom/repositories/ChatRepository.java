@@ -8,10 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface ChatRepository extends JpaRepository<Chat, Long> {
 
-    User findOneByUsername(String username);
-
-    User findOneByUsernameOrEmail(String username, String email);
-
+    Chat findOneByChatters(User user);
 }

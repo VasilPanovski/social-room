@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { UserService } from '../../../services/user.service';
+import { NotificationService } from '../../../services/notification.service';
+import { ChatService } from '../../chat/chat.service';
 import { Constants } from '../../../constants/constants'
 
 const AuthToken: string = Constants.authToken;
@@ -17,27 +20,22 @@ export class ProfileNormalComponent implements OnInit {
     private userToShow;
     private mainImage: string;
     private showPopup : boolean = false;
-    private video: any;
     private doNotshowUserActions: boolean;
     private logUser: any; 
+    private viewedUserId;
+    public success: string;
+    public error: boolean;
 
     changeImage(image): void {
         this.mainImage = image;
     }
 
-    openPopup(video): void { 
-        console.log(video) 
-        this.video = video;
-        this.showPopup = true;
-    }
-
-    closePopup(): void { 
-        this.showPopup = false; 
-    } 
-
     constructor(
         private userService: UserService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        public chatService: ChatService,
+        private notificationService: NotificationService,
+        public router: Router
     ) { }
     
 
@@ -45,11 +43,13 @@ export class ProfileNormalComponent implements OnInit {
         this.logUser = this.userService.loggedUser;
         let token = localStorage.getItem(AuthToken);
         let userId: string = (<any>this.route.params)._value.id; 
+        console.log(userId)
         this.userService.getUserData(userId)
         .subscribe(x => {
             this.userToShow = x;
-            this.mainImage = this.userToShow.images[0];
+            this.mainImage = this.userToShow.profilePicUrl;
             this.contentLoaded = true; 
+            console.log(x)
             if(this.logUser){
                 this.doNotshowUserActions = this.checkIfProfileIsLogedUser(this.logUser.id,this.userToShow._id )
             }            
@@ -83,4 +83,39 @@ export class ProfileNormalComponent implements OnInit {
             return false;
         }
     }
+
+    public inviteToChat(id) {
+        var inviteToChatParams = {
+          sender: this.logUser.id,
+          receiver: id
+        };
+
+        this.chatService.inviteToChat(inviteToChatParams)
+          .subscribe((res: any) => {
+              console.log(res)
+            var params = {
+              user: this.viewedUserId,
+              notificationTitle: 'New chat invitation',
+              notificationText: this.userService.loggedUser.username + ' invited you to a chat',
+              senderId: this.logUser.id,
+              chatId: res.body.result['_id']
+            };
+            this.notificationService.sendNotification(params);
+    
+            this.router.navigate(['/chat/' + res.body.result['_id']]);
+    
+            this.notificationService.saveNotification(params)
+              .subscribe((res: any) => {
+                  this.success = 'Done!';
+                },
+                (err: any) => {
+                  this.error = true;
+    
+                  setTimeout(() => {
+                    this.error = false;
+                  }, 2500);
+                });
+          });
+    
+      }
 }

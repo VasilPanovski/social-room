@@ -1,14 +1,11 @@
 <div class="wrapper" *ngIf="contentLoaded; else loadingTemplate">
-	<app-header></app-header>
 
 	<div class="main">
-		<!-- <banners-top></banners-top> -->
-
 		<section class="section-profile-basic">
 			<header class="section-head" style="background-image: url(assets/css/images/backgrounds/profile-head-bg.jpg)">
 				<div class="shell">
 					 <div class="profile-primary-image">
-						 <div class="image" [style.background-image]="'url('+userToShow.profilPicUrl+')'"></div>
+						 <div class="image" [style.background-image]="'url('+userToShow.profilePicUrl+')'"></div>
 						 <img src="assets/css/images/icon-new/hot-rated-icon.png" alt="">
 					 </div> 
 
@@ -21,11 +18,8 @@
 			<div class="section-head-under">
 				<div class="shell">
 					<ul class="list-living-postition" >
-						<!-- <li *ngIf="!(userToShow.country == 'undefined')">
-							<strong>Nationality:</strong> <i>{{userToShow.country}}</i>
-						</li> -->
 
-						<li *ngIf="!(userToShow.personalInfo.location == 'undefined')">
+						<li *ngIf="!(userToShow.location == 'undefined')">
 							<strong>Current Location:</strong> <i>{{userToShow.location}}</i>
 						</li>
 					</ul>
@@ -45,30 +39,16 @@
 					</div>
 
 					<div class="section-content">
-						<div class="image-primary" *ngIf="userToShow.images.length" [style.background-image]="'url('+mainImage+')'"></div>
+						<div class="image-primary" *ngIf="userToShow.profilePicUrl" [style.background-image]="'url('+mainImage+')'"></div>
 
-						<ul class="list-images">
-							<li *ngFor="let image of userToShow.images">
-								<span [style.background-image]="'url('+image+')'" (click)="changeImage(image)"></span>
-							</li> 
-						</ul>
-
-						<!-- <div class="list-videos">
-							<li *ngFor="let video of userToShow.videos">
-								<iframe allowfullscreen="" frameborder="0" height="100%" scrolling="auto"   width="100%" [src]="video | safe"> </iframe>
-								  
-								<small (click)="openPopup(video)"></small>
-							</li>
-						</div> -->
-
-						<div class="section-actions" *ngIf="!doNotshowUserActions">
+						<div class="section-actions" *ngIf="doNotshowUserActions">
 							<ul class="list-buttons">
 								<li>
 									<a href="#" class="btn">Make introduction</a>
 								</li>
 
 								<li>
-									<a href="#" class="btn">Invite to chat</a>
+									<a [routerLink]="" (click)="inviteToChat(userToShow.id)" class="btn">Invite to chat</a>
 								</li>
 
 								<li>
@@ -84,13 +64,7 @@
 				</div>
 			</div>
 		</section>
-
-		<!-- <banners-bottom></banners-bottom> -->
 	</div>
-<!-- 
-	<subscribe-template></subscribe-template> -->
-
-	<app-footer></app-footer> 
 </div>
 
 <ng-template #loadingTemplate>
@@ -101,11 +75,3 @@
 	</div>
 </ng-template>
 
-
-<!-- <div class="popup-video-wrap" *ngIf="showPopup">
-	<div class="popup-video">
-		<span class="close" (click)="closePopup()">X</span>
-
-		<iframe allowfullscreen="" frameborder="0" height="100%" scrolling="auto"   width="100%"  [src]="video | safe"> </iframe>
-	</div>	
-</div> -->

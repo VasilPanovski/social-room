@@ -51,7 +51,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/login").permitAll()
                 .antMatchers("/api/loggedUser").permitAll()
                 .antMatchers("/api/users/user/{id}").permitAll()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/api/chat/invitation").permitAll()
+                .antMatchers("/api/users/people").permitAll()
+                .antMatchers("/api/logout").permitAll()
+                .antMatchers("/api/notification").permitAll()
+                .antMatchers("/api/chat/getChat/{chatId}").permitAll()
+                .antMatchers("/**").permitAll()
                 .and().apply(securityConfigurerAdapter());
     }
 

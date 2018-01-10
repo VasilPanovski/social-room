@@ -79,10 +79,10 @@ export class HeaderComponent implements OnInit {
                           }
                       ).length > 0;
                       let userId = this.user.id;
-                      this.connection = this._notificationService.getNotifications(userId).subscribe(notification => {
-                          this.notifications.unshift(notification);
-                          this.unread = true;
-                      });
+                    //   this.connection = this._notificationService.getNotifications(userId).subscribe(notification => {
+                    //       this.notifications.unshift(notification);
+                    //       this.unread = true;
+                    //   });
 
                   }
               },
@@ -93,30 +93,6 @@ export class HeaderComponent implements OnInit {
               });
       }
   }
-
-
-//   ngAfterViewInit() {
-//       var $win = $(window);
-//       var $doc = $(document);
-//       //=====================================================//
-//       // fixed header
-//       //=====================================================//
-
-//       // var header = $('#header');
-//       // var headerHeight = header.outerHeight();
-
-//       // $win.on('load resize', function () {
-
-//       //     if ($win.width() >= 1025) {
-//       //         header.parent('.header-wrap').height(headerHeight);
-//       //     } else {
-//       //         header.parent('.header-wrap').height('auto');
-//       //         $('.header-inner').removeAttr('style');
-//       //         $('.btn-menu ').removeClass('open');
-//       //     }
-//       // });
-
-//   }
 
   public logout() {
       this.authService.logout()

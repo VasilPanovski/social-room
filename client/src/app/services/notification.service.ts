@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpHeadersService } from './http-headers.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import * as io from 'socket.io-client';
 import { Constants } from '../constants/constants';
 
 const markNotificationsAsRead: string = Constants.hostUrl + 'api/notifications/markAsRead/';
-const saveNotificationUrl: string = Constants.hostUrl + 'api/notifications/saveNotification';
+const saveNotificationUrl: string = Constants.hostUrl + 'api/notifications/save';
 
 @Injectable()
 export class NotificationService {
@@ -15,7 +16,8 @@ export class NotificationService {
   private socket;
 
   constructor(
-    private http: Http
+    private http: Http,
+    public httpHeaderService: HttpHeadersService
   ) {
   }
 
@@ -33,8 +35,9 @@ export class NotificationService {
   }
 
   sendNotification(params) {
-    this.socket.emit('add-notification', params);
-    return this.http.post(saveNotificationUrl, params)
+
+    //this.socket.emit('add-notification', params);
+    return this.http.post(saveNotificationUrl, JSON.stringify(params), this.httpHeaderService.getHeaders())
       .map((res: Response) => {
         return {
           status: res.status,
@@ -44,7 +47,7 @@ export class NotificationService {
   }
 
   saveNotification(params) {
-    return this.http.post(saveNotificationUrl, params)
+    return this.http.post(saveNotificationUrl, JSON.stringify(params), this.httpHeaderService.getHeaders())
       .map((res: Response) => {
         return {
           status: res.status,

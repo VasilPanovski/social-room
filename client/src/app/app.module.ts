@@ -18,6 +18,10 @@ import { AllUsersComponent } from './components/profile/allUsers/allUsers.compon
 import { ChatComponent } from './components/chat/chat.component';
 import { AllChatsTemplateComponent } from './components/chat/allChats/allChats.component';
 
+import { EmojiPickerModule } from 'angular2-emoji-picker';
+
+import { StompService } from 'ng2-stomp-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,9 +43,10 @@ import { AllChatsTemplateComponent } from './components/chat/allChats/allChats.c
     HttpModule,
     SharedModule,
     Ng2CloudinaryModule,
-    FileUploadModule
+    FileUploadModule,
+    EmojiPickerModule.forRoot()
   ],
-  providers: [],
+  providers: [StompService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

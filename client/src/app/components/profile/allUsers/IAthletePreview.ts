@@ -1,14 +1,9 @@
 export interface IathletePreview{
     id: string,
-    // username: string,
+    username: string,
     profilePicUrl:string,
-    firstName: string,
-    lastName: string,
-    // email: string,
+    email: string,
     roles: [string],
     country: string,
-    // fullname: string,
-    competitionsEntered: number,
-    overallRank: number
 
 }

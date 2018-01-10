@@ -64,7 +64,7 @@ export class ProfileSettingsComponent implements OnInit {
 			'gender': this.user.gender,
 			'dateOfBirth': this.user.dateOfBirth,
 			'location': this.user.location,
-			'profilePicUrl': this.user.profilPicUrl,
+			'profilePicUrl': this.user.profilePicUrl,
 			'newPassword': ['', Validators.minLength(4)],
 			'confirmedPassword': ['', Validators.minLength(4)]
 		});
@@ -78,7 +78,7 @@ export class ProfileSettingsComponent implements OnInit {
 				'gender': this.user.gender,
 				'dateOfBirth': this.user.dateOfBirth,
 				'location': this.user.location,
-				'profilePicUrl': this.user.profilPicUrl,
+				'profilePicUrl': this.user.profilePicUrl,
 				'newPassword': ['', Validators.minLength(4)],
 				'confirmedPassword': ['', Validators.minLength(4)]
 			});
@@ -103,7 +103,7 @@ export class ProfileSettingsComponent implements OnInit {
 							'gender': this.user.gender,
 							'dateOfBirth': this.user.dateOfBirth,
 							'location': this.user.location,
-							'profilePicUrl': this.user.profilPicUrl,
+							'profilePicUrl': this.user.profilePicUrl,
 							'newPassword': ['', Validators.minLength(4)],
 							'confirmedPassword': ['', Validators.minLength(4)]
 						});
@@ -118,7 +118,6 @@ export class ProfileSettingsComponent implements OnInit {
 
 	updateSettings() {
 		let form = this.userSettingsToUpdate.value;
-		console.log(form)
 		this.userService.updateSettings(this.user.id, form)
 			.subscribe((response) => {
 				this.isError = false;
@@ -126,7 +125,6 @@ export class ProfileSettingsComponent implements OnInit {
 					.subscribe((x) => {
 						this.userService.loggedUser = x.user;
 						this.userSettingsToUpdate.reset();
-
 						this.router.navigate(['/home']);
 					},
 					(err) => {
@@ -135,11 +133,10 @@ export class ProfileSettingsComponent implements OnInit {
 						this.userSettingsToUpdate.reset();
 
 						this.router.navigate(['/home']);
-						console.log('Error in user service');
 					});
 			},
 			(error) => {
-				this.errorMessage = error.json().message;
+				this.errorMessage = JSON.parse(error.body).message;
 				this.isError = true;
 				setTimeout(() => {
 					this.isError = false;

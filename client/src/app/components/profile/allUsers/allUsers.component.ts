@@ -18,17 +18,15 @@ export class AllUsersComponent implements OnInit {
     public ngOnInit(): void {
         this.userService.getAllUsers()
             .subscribe((people) => {
-              var user = this.userService.loggedUser;
+              let user = this.userService.loggedUser;
               this.people = people;
  
               for(let peopleItem of this.people) {
-                  if(peopleItem.gender == "M") {
+                  if(peopleItem.gender == "Male") {
                     this.maleUsers.push(peopleItem);
-                  } else if (peopleItem.gender == "F") {
+                  } else if (peopleItem.gender == "Female") {
                     this.femaleUsers.push(peopleItem);
-                  } else if (peopleItem.gender == " ") {
-                     this.otherUsers.push(peopleItem);
-                  }
+                  } 
               }
             });
     }

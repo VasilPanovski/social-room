@@ -13,8 +13,6 @@ import { FilterdataPipe } from './peopleFilter.pipe';
 })
 export class PeopleTemplateComponent implements OnInit {
 
-  
-
   public filterName: string = 'all';
 
   @Input() public people: IathletePreview[] = [];
@@ -35,12 +33,10 @@ export class PeopleTemplateComponent implements OnInit {
     changeFilter(filter) { 
       if(filter == 'all') {
         this.peopleToShow = this.people;
-      } else if (filter == 'm') { 
+      } else if (filter == 'Male') { 
         this.peopleToShow = this.male;
-      } else if (filter == 'f') { 
+      } else if (filter == 'Female') { 
         this.peopleToShow = this.female;
-      } else if (filter == 'other') { 
-        this.peopleToShow = this.other;
       }
 
       this.filterName = filter;
@@ -49,26 +45,29 @@ export class PeopleTemplateComponent implements OnInit {
       console.log('profile');
     }
 
-    
-
     public inviteToChat(id) {
+      let senderId = Number(this.userService.loggedUser.id);
+      let receiverId = Number(id);
+
       var inviteToChatParams = {
-        sender: this.userService.loggedUser.id,
-        receiver: id
+        sender: senderId,
+        receiver: receiverId
       };
 
+      console.log(inviteToChatParams)
+      
       this.chatService.inviteToChat(inviteToChatParams)
         .subscribe((res: any) => {
           var params = {
-              user: id,
+              user: receiverId,
               notificationTitle: 'New chat invite',
               notificationText: 'Someone invited you to a chat',
-              senderId: res.body.result['_id'],
-              chatId: res.body.result['_id']
+              senderId: senderId,
+              chatId: res.body['id']
             };
             this._notificationService.sendNotification(params);
-
-            this.router.navigate(['/chat/' + res.body.result['_id']]);
+            console.log(params)
+            this.router.navigate(['/chat/' + res.body['id']]);
 
           this._notificationService.saveNotification(params)
             .subscribe((res: any) => {
@@ -79,14 +78,14 @@ export class PeopleTemplateComponent implements OnInit {
 
                 setTimeout(() => {
                   this.error = false;
-                }, 2500);
+                }, 3500);
               });
         });
 
     }
 
     ngOnInit(): void {
-      console.log('blaa')
+      
     }
 
 }

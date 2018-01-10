@@ -21,9 +21,26 @@ public class Notification {
     @Column(name = "created_at")
     private Date createdAt;
 
+    private boolean seen;
+
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User owner;
+    @JoinColumn(name = "sender_id")
+    private User sender;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "receiver_id")
+    private User receiver;
+
+    public Notification() {
+        this.setSeen(false);
+    }
+
+    public Notification(String notificationTitle, String notificationText, User sender, User receiver) {
+        this.notificationTitle = notificationTitle;
+        this.notificationText = notificationText;
+        this.sender = sender;
+        this.receiver = receiver;
+    }
 
     public long getId() {
         return id;
@@ -57,11 +74,27 @@ public class Notification {
         this.createdAt = createdAt;
     }
 
-    public User getOwner() {
-        return owner;
+    public boolean isSeen() {
+        return seen;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setSeen(boolean seen) {
+        this.seen = seen;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
     }
 }

@@ -6,8 +6,8 @@ export class Constants {
     public static readonly cloudinaryUploadPreset: string = 'b14hwmyl';
 
     public static readonly genders: any[] = [
-        { value: 'F', display: 'Female' },
-        { value: 'M', display: 'Male' }
+        { value: 'Female', display: 'Female' },
+        { value: 'Male', display: 'Male' }
     ];
     
 }

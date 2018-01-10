@@ -1,0 +1,37 @@
+.section-chat-room { border-top: 1px solid #737272; border-bottom: 1px solid #737272; position: relative; height: calc(100vh - 210px); overflow: hidden; }
+.section-chat-room .shell { height: 100%; }
+.section-chat-room .section-overlay-aside { position: absolute; top: 0; left: 0; width: 50%; bottom: 0; background-size: cover; background-position: center; background-color: #F7F5F6}
+.section-chat-room .section-inner { display: flex; height: 100%; background-color: #fff}
+.section-chat-room .section-aside { width: 25%; border-right: 1px solid #737272; position: relative; z-index: 19; }
+.section-chat-room .section-content { width: 75%; position: relative; z-index: 19; background: #fff; }
+.section-chat-room .section-content:before { content: ''; position: absolute; bottom: 150px; left: 0; width: 300%; height: 1px; background: #737272; }
+
+.chat-wrapper { height: 100%; }
+
+.chat-message { height: 150px; }
+.chat-message .ui.form { height: 100%; }
+.chat-message .ui.form .form-inner { height: 100%; position: relative; }
+.chat-message .chat-message-inner-text { height: 100%; }
+
+.textarea-custom { height: 100%; overflow: auto; padding: 20px; resize: both; width: 100%; }
+
+.chat-message .message-actions { position: absolute; bottom: 0; right: 0; }
+.chat-message .message-actions button[type="submit"] { padding: 0; width: 26px; height: 26px; }
+
+.allMessages { height: calc(100% - 150px); overflow: auto; padding: 20px; }
+
+#emoji-btn { text-decoration: none; }
+#emoji-btn i { font-style: normal; }
+.chat-nav-icons { width: 20px; }
+
+.label-image-chat-upload { position: relative; }
+.label-image-chat-upload input { position: absolute; top: 0; left: -99999px; } 
+
+.image-message-content {  word-wrap: break-word; }
+.image-message-content img { width: 100%; height: auto; max-width: 200px; } 
+
+.chatUser.sender .profile { background:#d53613; color: #fff; font-size: 14px; padding: 7px; display: inline-block; border-radius: 9px; }
+.chatUser.receiver .profile { background: #f08365; color: #fff; font-size: 14px; padding: 7px; display: inline-block; border-radius: 9px; }
+
+.message-row { margin: 16px 0 20px 0; }
+.chatUser.sender .chatUser-inner { text-align: right; }

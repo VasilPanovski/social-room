@@ -21,7 +21,7 @@
 
 .header { position: relative; }
 
-.header .navigation-secondary { position: absolute; top: 100%; left: 0; width: 100%; display: none; z-index: 100; }
+.nav-link {text-decoration: none; float: right; margin-right: 10px; align-content: right}
 
 .header .widget-get-notified { max-height: 200px; overflow: auto; transition: all .3s; opacity: 1; visibility: visible; }
 .header .widget-get-notified::-webkit-scrollbar {display: none; }

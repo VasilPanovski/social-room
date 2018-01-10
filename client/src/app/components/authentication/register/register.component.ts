@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
             .subscribe((res: any) => {
                 this.userId = res.body['id'];
                 this.userEmail = res.body['email'];
-                console.log(this.userEmail)
                 this.router.navigate(['/home']);
               },
             (err: any) => {

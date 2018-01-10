@@ -41,7 +41,6 @@ export class UserService {
         return this.http.post(GetLoggedUserUrl, jwt)
             .map((res: Response) => {
                 this.loggedUser = JSON.parse(res['_body']);
-                console.log(this.loggedUser)
                 return {
                     status: res.status,
                     user: this.loggedUser
@@ -66,8 +65,9 @@ export class UserService {
 
     public updateSettings(id: any, settings: any): Observable<any> {
 
-        return this.http.put(`${UserByIdUrl}${id}`, settings, {'withCredentials': true})
+        return this.http.put(`${UserByIdUrl}${id}`, settings)
             .map((res: Response) => {
+                console.log(res)
                 return { status: res.status, body: res.json() }
             })
     }

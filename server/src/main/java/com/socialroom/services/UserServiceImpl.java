@@ -1,6 +1,7 @@
 package com.socialroom.services;
 
 import com.socialroom.entities.user.Authority;
+import com.socialroom.entities.user.GenderType;
 import com.socialroom.entities.user.User;
 import com.socialroom.entities.user.UserImage;
 import com.socialroom.exceptions.UserExistsException;
@@ -8,6 +9,7 @@ import com.socialroom.exceptions.UserNotFoundException;
 import com.socialroom.models.bindingModels.UpdateUserModel;
 import com.socialroom.models.bindingModels.UserRegistrationModel;
 import com.socialroom.models.viewModels.LoggedUser;
+import com.socialroom.models.viewModels.PeopleModel;
 import com.socialroom.models.viewModels.UserViewModel;
 import com.socialroom.repositories.AuthorityRepository;
 import com.socialroom.repositories.UserRepository;
@@ -20,7 +22,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -87,6 +91,14 @@ public class UserServiceImpl implements UserService {
         return loggedUser;
     }
 
+    @Override
+    public LoggedUser getUserData(Long userId) {
+        User user = this.userRepository.findOne(userId);
+        LoggedUser userData = this.modelMapper.map(user, LoggedUser.class);
+        userData.setAuthorities(user.getAuthorities().stream().map(Authority::getAuthority).collect(Collectors.toSet()));
+        return userData;
+    }
+
     @Transactional
     @Override
     public void updateUser(UpdateUserModel userModel, Long id) {
@@ -100,16 +112,36 @@ public class UserServiceImpl implements UserService {
         if (newUsername.equals(user.getUsername())) {
             user.setUsername(newUsername);
         }
-        System.out.println(userModel);
+
         user.setUsername(userModel.getUsername());
-        user.setGender(userModel.getGender());
+        user.setGender(GenderType.valueOf(userModel.getGender()));
         user.setDateOfBirth(userModel.getDateOfBirth());
         user.setLocation(userModel.getLocation());
-        user.setProfilPicUrl(userModel.getProfilePicUrl());
+        user.setProfilePicUrl(userModel.getProfilePicUrl());
         String newPassword = passwordEncoder.encode(userModel.getNewPassword());
         if (user.getPassword().equals(newPassword)) {
             user.setPassword(newPassword);
         }
+    }
 
+    @Override
+    public List<PeopleModel> getAllUsers() {
+        List<User> users = this.userRepository.findAll();
+        List<PeopleModel> people = new ArrayList<>();
+        PeopleModel peopleModel = null;
+        for (User user : users) {
+            peopleModel = this.modelMapper.map(user, PeopleModel.class);
+            peopleModel.setGender(String.valueOf(user.getGender()));
+            people.add(peopleModel);
+        }
+
+        return people;
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(Long id) {
+        User user = this.userRepository.findOne(id);
+        this.userRepository.delete(user);
     }
 }

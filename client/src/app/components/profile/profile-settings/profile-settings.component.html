@@ -107,7 +107,9 @@
 								</div>
 
 								<div class="form-row">
-									<button type="submit" value="Submit" class="form-btn">
+									<button 
+									[disabled]="!userSettingsToUpdate.valid||userSettingsToUpdate.controls['confirmedPassword'].value != userSettingsToUpdate.controls['newPassword'].value"
+									type="submit" value="Submit" class="form-btn">
 									UPDATE SETTINGS
 								</button>
 								</div>

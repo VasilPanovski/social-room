@@ -26,6 +26,10 @@ public class Chat {
         this.chatters = new HashSet<>();
     }
 
+    public Chat(List<ChatMessage> messages) {
+        this.messages = messages;
+    }
+
     public long getId() {
         return id;
     }

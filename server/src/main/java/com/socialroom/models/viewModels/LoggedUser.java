@@ -11,7 +11,7 @@ public class LoggedUser {
     private long id;
     private String username;
     private String email;
-    private String profilPicUrl;
+    private String profilePicUrl;
     private String dateOfBirth;
     private String location;
     private String gender;
@@ -52,12 +52,12 @@ public class LoggedUser {
         this.email = email;
     }
 
-    public String getProfilPicUrl() {
-        return profilPicUrl;
+    public String getProfilePicUrl() {
+        return profilePicUrl;
     }
 
-    public void setProfilPicUrl(String profilPicUrl) {
-        this.profilPicUrl = profilPicUrl;
+    public void setProfilePicUrl(String profilePicUrl) {
+        this.profilePicUrl = profilePicUrl;
     }
 
     public String getDateOfBirth() {

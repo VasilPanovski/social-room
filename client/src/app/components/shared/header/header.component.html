@@ -7,7 +7,18 @@
 						Social Room
 					</a>
 				</div>
+				
+				<div *ngIf="user" class="header-col-size1">
+					<a class="nav-link" [routerLink]="['/profile', user.id]">
+						My Profile
+					</a>
+				</div>
 
+				<div *ngIf="user" class="header-col-size1">
+					<a class="nav-link" routerLink="/people">
+						People
+					</a>
+				</div>
 				<div class="header-col-size3 login" *ngIf="user">
 					<nav class="nav-notification" [ngClass]="{'active': notificationsDropdown === true}">
 						<a (click)="toggleNotifications()">
@@ -42,11 +53,11 @@
 					</nav>
 
 					<nav class="profile" [ngClass]="{'active': profileDropdown === true}">
-						<a class="avatar" [style.background-image]="'url('+user.profilPicUrl+')'" (click)="toggleProfileDropdown()"></a>
+						<a class="avatar" [style.background-image]="'url('+user.profilePicUrl+')'" (click)="toggleProfileDropdown()"></a>
 						
 						<ul class="profile-dropdown">
 							<li>
-								<a [routerLink]="['/profile/pro', user.id]" *ngIf="isPro; else amateurTemplate" (click)="toggleProfileDropdown()">
+								<a [routerLink]="['/profile', user.id]" *ngIf="isPro; else amateurTemplate" (click)="toggleProfileDropdown()">
 									<i class="fa fa-user-o" aria-hidden="true"></i>
 
 									<span>View profile </span>
@@ -82,7 +93,7 @@
 			</div>
 		</div>
 
-		<div class="header-inner" *ngIf="user;">
+		<!-- <div class="header-inner" *ngIf="user;">
 			<div class="shell">
 				<div class="navigation">
 					<nav class="nav">
@@ -124,7 +135,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<!-- <div class="navigation-secondary">
 			<div class="shell">
